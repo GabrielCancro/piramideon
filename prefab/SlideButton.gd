@@ -6,9 +6,11 @@ var my_touch_index = null
 var start_touch_pos = Vector2()
 var dir_vec = Vector2()
 var dist = 0
-var dist_max = 70
-var dist_min = 40
 var percent_vec =  Vector2()
+
+export var dist_max = 70
+export var dist_min = 40
+export var only_horizontal = false
 
 signal onUpVector(dir,percent)
 signal onTap()
@@ -40,6 +42,7 @@ func _input(event):
 		last_touch_index = event.index
 		last_touch_pos = event.position
 	if event is InputEventScreenDrag && event.index == my_touch_index: 
+		if only_horizontal: event.position = Vector2(event.position.x,last_touch_pos.y)
 		dir_vec = start_touch_pos.direction_to( event.position )
 		dist = start_touch_pos.distance_to( event.position )
 		if dist > dist_max: dist = dist_max

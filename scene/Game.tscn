@@ -1,7 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scene/Game.gd" type="Script" id=1]
 [ext_resource path="res://assets/IMFePIsc28P_0.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://assets/character.png" type="Texture" id=3]
+[ext_resource path="res://scene/CanvasUI.gd" type="Script" id=4]
 [ext_resource path="res://prefab/Player.tscn" type="PackedScene" id=7]
 [ext_resource path="res://prefab/SlideButton.tscn" type="PackedScene" id=8]
 [ext_resource path="res://prefab/Proyectil.tscn" type="PackedScene" id=9]
@@ -16,6 +18,7 @@ anchor_bottom = 1.0
 script = ExtResource( 1 )
 
 [node name="CanvasUI" type="CanvasLayer" parent="."]
+script = ExtResource( 4 )
 
 [node name="lb_vel" type="Label" parent="CanvasUI"]
 margin_left = 19.0
@@ -24,9 +27,6 @@ margin_right = 231.0
 margin_bottom = 84.0
 custom_fonts/font = SubResource( 1 )
 text = "velocity"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="lb_version" type="Label" parent="CanvasUI"]
 anchor_left = 1.0
@@ -41,11 +41,41 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="SB_move" parent="CanvasUI" instance=ExtResource( 8 )]
+position = Vector2( 81, 353 )
+dist_min = 10
+only_horizontal = true
+
 [node name="SB_jump" parent="CanvasUI" instance=ExtResource( 8 )]
-position = Vector2( 882, 251 )
+position = Vector2( 789, 352 )
 
 [node name="SB_attack" parent="CanvasUI" instance=ExtResource( 8 )]
-position = Vector2( 861, 371 )
+position = Vector2( 820, 216 )
+
+[node name="Lives" type="HBoxContainer" parent="CanvasUI"]
+margin_left = 32.0
+margin_top = 24.0
+margin_right = 430.0
+margin_bottom = 244.0
+rect_scale = Vector2( 0.3, 0.3 )
+custom_constants/separation = 54
+
+[node name="l1" type="TextureRect" parent="CanvasUI/Lives"]
+margin_right = 130.0
+margin_bottom = 220.0
+texture = ExtResource( 3 )
+
+[node name="l2" type="TextureRect" parent="CanvasUI/Lives"]
+margin_left = 184.0
+margin_right = 314.0
+margin_bottom = 220.0
+texture = ExtResource( 3 )
+
+[node name="l3" type="TextureRect" parent="CanvasUI/Lives"]
+margin_left = 368.0
+margin_right = 498.0
+margin_bottom = 220.0
+texture = ExtResource( 3 )
 
 [node name="Player" parent="." instance=ExtResource( 7 )]
 position = Vector2( 0, 0 )

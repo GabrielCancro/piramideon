@@ -4,6 +4,8 @@ func _ready():
 	var level = preload("res://Levels/Level1.tscn").instance()
 	add_child(level)
 	$Player.position = level.get_node("StartPoint").position
+	$Player.checkpoint_position = $Player.position
+	$Player.checkpoint_position = $Player.position
 	level.get_node("StartPoint").visible = false
 
 func _process(delta):
