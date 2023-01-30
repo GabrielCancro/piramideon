@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scene/Game.gd" type="Script" id=1]
 [ext_resource path="res://assets/IMFePIsc28P_0.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://assets/character.png" type="Texture" id=3]
 [ext_resource path="res://scene/CanvasUI.gd" type="Script" id=4]
+[ext_resource path="res://assets/intro_bg.jpg" type="Texture" id=5]
 [ext_resource path="res://prefab/Player.tscn" type="PackedScene" id=7]
 [ext_resource path="res://prefab/SlideButton.tscn" type="PackedScene" id=8]
 [ext_resource path="res://prefab/Proyectil.tscn" type="PackedScene" id=9]
@@ -16,6 +17,17 @@ font_data = ExtResource( 2 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+modulate = Color( 0.203922, 0.298039, 0.623529, 1 )
+position = Vector2( 62, -5 )
+scale = Vector2( 1.2, 1 )
+texture = ExtResource( 5 )
 
 [node name="CanvasUI" type="CanvasLayer" parent="."]
 script = ExtResource( 4 )
