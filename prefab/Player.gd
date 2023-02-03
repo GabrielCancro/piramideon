@@ -16,9 +16,9 @@ var atAttack = 1000
 var isDisable = false
 var checkpoint_position = Vector2()
 
-onready var SB_jump = get_node("/root/Game/CanvasUI/SB_jump")
-onready var SB_attack = get_node("/root/Game/CanvasUI/SB_attack")
-onready var SB_move = get_node("/root/Game/CanvasUI/SB_move")
+onready var SB_jump = get_node("/root/Game/CanvasUI/Right/SB_jump")
+onready var SB_attack = get_node("/root/Game/CanvasUI/Right/SB_attack")
+onready var SB_move = get_node("/root/Game/CanvasUI/Left/SB_move")
 
 signal onHit
 signal onDead

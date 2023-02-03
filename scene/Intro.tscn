@@ -41,3 +41,10 @@ custom_fonts/font = SubResource( 1 )
 text = "P I R A M I D E O N"
 
 [node name="Tween" type="Tween" parent="."]
+
+[node name="Button" type="Button" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -462.0
+margin_bottom = 250.0
+flat = true
