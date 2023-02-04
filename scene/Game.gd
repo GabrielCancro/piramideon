@@ -1,7 +1,8 @@
 extends Control
 
 func _ready():
-	var level = preload("res://Levels/Level1.tscn").instance()
+	GC.GAME_REF = self
+	var level = load("res://Levels/Level"+str(GC.LEVEL)+".tscn").instance()
 	add_child(level)
 	$Player.position = level.get_node("StartPoint").position
 	$Player.checkpoint_position = $Player.position

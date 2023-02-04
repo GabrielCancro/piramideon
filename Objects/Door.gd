@@ -1,15 +1,9 @@
 extends Node2D
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	$Area2D.connect("body_entered",self,"onBody")
 
-
 func onBody(body):
-	print(body.name)
+	if body.name != "Player": return
+	GC.DATA.level_success.append(GC.LEVEL)
+	get_tree().change_scene("res://scene/SelectLevel.tscn")

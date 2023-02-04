@@ -19,8 +19,8 @@ func _ready():
 	$Tween.interpolate_property($Label,"modulate",Color(1,1,1,1),Color(1,1,1,0),.3,Tween.TRANS_LINEAR,Tween.EASE_IN_OUT)
 	$Tween.start()
 	yield(get_tree().create_timer(1.5),"timeout")
-	get_tree().change_scene("res://scene/Game.tscn")
+	get_tree().change_scene("res://scene/SelectLevel.tscn")
 
 func onButtonClick():
-	get_tree().change_scene("res://scene/Game.tscn")
+	get_tree().change_scene("res://scene/SelectLevel.tscn")
 	
