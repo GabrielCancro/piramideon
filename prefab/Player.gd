@@ -10,8 +10,8 @@ var power_atk_inc = 0
 var climb_pos = Vector2(0,0)
 
 var atSpeed = 150
-var atJump = 1000
-var atAttack = 1000
+var atJump = 750
+var atAttack = 750
 
 var isDisable = false
 var checkpoint_position = Vector2()
@@ -29,6 +29,7 @@ func _ready():
 	SB_jump.connect("onUpVector",self,"onJump")
 	SB_attack.connect("onUpVector",self,"onAttack")
 	checkpoint_position = position
+	GC.PLAYER_REF = self
 
 func _physics_process(delta):
 	if isDisable: return
@@ -50,7 +51,7 @@ func onJump(dir,percent):
 func onAttack(dir,percent):
 	if isDisable: return
 	var pry = preload("res://prefab/Proyectil.tscn").instance()
-	pry.position = position + dir*70
+	pry.position = position + dir*30
 	pry.velocity = atAttack*dir*$prg_attack.power*.01
 	get_node("/root/Game").add_child(pry)
 
@@ -71,7 +72,6 @@ func hit(val=1):
 		position = checkpoint_position
 	else:
 		emit_signal("onDead")
-		get_tree().quit()
 
 func fastenChain(val):
 	cChain += val

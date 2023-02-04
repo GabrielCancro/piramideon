@@ -8,8 +8,8 @@ var dir_vec = Vector2()
 var dist = 0
 var percent_vec =  Vector2()
 
-export var dist_max = 70
-export var dist_min = 40
+export var dist_max = 40
+export var dist_min = 20
 export var only_horizontal = false
 
 signal onUpVector(dir,percent)

@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://font/font_big_title.tres" type="DynamicFont" id=1]
 [ext_resource path="res://scene/SelectLevel.gd" type="Script" id=2]
 [ext_resource path="res://assets/intro_bg.jpg" type="Texture" id=3]
 [ext_resource path="res://prefab/PiramidButton.tscn" type="PackedScene" id=4]
+[ext_resource path="res://prefab/BlackScreen.tscn" type="PackedScene" id=5]
 
 [node name="SelectLevel" type="Control"]
 anchor_right = 1.0
@@ -21,10 +22,9 @@ stretch_mode = 1
 [node name="Label" type="Label" parent="."]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -262.0
-margin_top = 8.0
-margin_right = 262.0
-margin_bottom = 82.0
+margin_left = -256.0
+margin_right = 256.0
+margin_bottom = 55.0
 custom_colors/font_color = Color( 0.996078, 1, 0.498039, 1 )
 custom_fonts/font = ExtResource( 1 )
 text = "Elige un nivel"
@@ -32,96 +32,102 @@ align = 1
 
 [node name="Piramid" type="VBoxContainer" parent="."]
 anchor_left = 0.5
-anchor_top = 1.0
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -458.0
-margin_top = -540.0
-margin_right = 458.0
-margin_bottom = -24.0
+anchor_bottom = 0.5
+margin_left = -238.0
+margin_top = -104.0
+margin_right = 238.0
+margin_bottom = 152.0
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="R1" type="HBoxContainer" parent="Piramid"]
-margin_right = 916.0
-margin_bottom = 100.0
+margin_right = 476.0
+margin_bottom = 48.0
 alignment = 1
 
 [node name="L1" parent="Piramid/R1" instance=ExtResource( 4 )]
+margin_left = 192.0
+margin_right = 284.0
 
 [node name="R2" type="HBoxContainer" parent="Piramid"]
-margin_top = 104.0
-margin_right = 916.0
-margin_bottom = 204.0
+margin_top = 52.0
+margin_right = 476.0
+margin_bottom = 100.0
 alignment = 1
 
 [node name="L1" parent="Piramid/R2" instance=ExtResource( 4 )]
-margin_left = 276.0
-margin_right = 456.0
+margin_left = 144.0
+margin_right = 236.0
 
 [node name="L2" parent="Piramid/R2" instance=ExtResource( 4 )]
-margin_left = 460.0
-margin_right = 640.0
+margin_left = 240.0
+margin_right = 332.0
 
 [node name="R3" type="HBoxContainer" parent="Piramid"]
-margin_top = 208.0
-margin_right = 916.0
-margin_bottom = 308.0
+margin_top = 104.0
+margin_right = 476.0
+margin_bottom = 152.0
 alignment = 1
 
 [node name="L1" parent="Piramid/R3" instance=ExtResource( 4 )]
-margin_left = 184.0
-margin_right = 364.0
+margin_left = 96.0
+margin_right = 188.0
 
 [node name="L2" parent="Piramid/R3" instance=ExtResource( 4 )]
+margin_left = 192.0
+margin_right = 284.0
 
 [node name="L3" parent="Piramid/R3" instance=ExtResource( 4 )]
-margin_left = 552.0
-margin_right = 732.0
+margin_left = 288.0
+margin_right = 380.0
 
 [node name="R4" type="HBoxContainer" parent="Piramid"]
-margin_top = 312.0
-margin_right = 916.0
-margin_bottom = 412.0
+margin_top = 156.0
+margin_right = 476.0
+margin_bottom = 204.0
 alignment = 1
 
 [node name="L1" parent="Piramid/R4" instance=ExtResource( 4 )]
-margin_left = 92.0
-margin_right = 272.0
+margin_left = 48.0
+margin_right = 140.0
 
 [node name="L2" parent="Piramid/R4" instance=ExtResource( 4 )]
-margin_left = 276.0
-margin_right = 456.0
+margin_left = 144.0
+margin_right = 236.0
 
 [node name="L3" parent="Piramid/R4" instance=ExtResource( 4 )]
-margin_left = 460.0
-margin_right = 640.0
+margin_left = 240.0
+margin_right = 332.0
 
 [node name="L4" parent="Piramid/R4" instance=ExtResource( 4 )]
-margin_left = 644.0
-margin_right = 824.0
+margin_left = 336.0
+margin_right = 428.0
 
 [node name="R5" type="HBoxContainer" parent="Piramid"]
-margin_top = 416.0
-margin_right = 916.0
-margin_bottom = 516.0
+margin_top = 208.0
+margin_right = 476.0
+margin_bottom = 256.0
 alignment = 1
 
 [node name="L1" parent="Piramid/R5" instance=ExtResource( 4 )]
-margin_left = 0.0
-margin_right = 180.0
 
 [node name="L2" parent="Piramid/R5" instance=ExtResource( 4 )]
-margin_left = 184.0
-margin_right = 364.0
+margin_left = 96.0
+margin_right = 188.0
 
 [node name="L3" parent="Piramid/R5" instance=ExtResource( 4 )]
+margin_left = 192.0
+margin_right = 284.0
 
 [node name="L4" parent="Piramid/R5" instance=ExtResource( 4 )]
-margin_left = 552.0
-margin_right = 732.0
+margin_left = 288.0
+margin_right = 380.0
 
 [node name="L5" parent="Piramid/R5" instance=ExtResource( 4 )]
-margin_left = 736.0
-margin_right = 916.0
+margin_left = 384.0
+margin_right = 476.0
+
+[node name="BlackScreen" parent="." instance=ExtResource( 5 )]

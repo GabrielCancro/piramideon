@@ -6,4 +6,4 @@ func _ready():
 func onBody(body):
 	if body.name != "Player": return
 	GC.DATA.level_success.append(GC.LEVEL)
-	get_tree().change_scene("res://scene/SelectLevel.tscn")
+	GC.GAME_REF.win_level()
