@@ -4,9 +4,8 @@ func _ready():
 	GC.GAME_REF = self
 	var level = load("res://Levels/Level"+str(GC.LEVEL)+".tscn").instance()
 	add_child(level)
-	$Player.position = level.get_node("StartPoint").position
-	$Player.checkpoint_position = $Player.position
-	$Player.checkpoint_position = $Player.position
+	GC.RESTART_POSITION = level.get_node("StartPoint").position
+	$Player.position = GC.RESTART_POSITION
 	$Player.connect("onDead",self,"onDead")
 	level.get_node("StartPoint").visible = false
 

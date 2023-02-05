@@ -14,7 +14,6 @@ var atAttack = 750
 
 var isDisable = false
 var isFriction = true
-var checkpoint_position = Vector2()
 
 var cChain = 0
 
@@ -28,7 +27,6 @@ signal onDead
 func _ready():
 	SB_jump.connect("onUpVector",self,"onJump")
 	SB_attack.connect("onUpVector",self,"onAttack")
-	checkpoint_position = position
 	GC.PLAYER_REF = self
 
 func _physics_process(delta):
@@ -75,7 +73,7 @@ func hit(val=1):
 	if(GC.LIVES>0): 
 		modulate.a = 1
 		isDisable = false
-		position = checkpoint_position
+		position = GC.RESTART_POSITION
 	else:
 		emit_signal("onDead")
 
