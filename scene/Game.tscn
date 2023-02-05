@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://scene/Game.gd" type="Script" id=1]
 [ext_resource path="res://assets/IMFePIsc28P_0.ttf" type="DynamicFontData" id=2]
@@ -9,6 +9,8 @@
 [ext_resource path="res://prefab/Player.tscn" type="PackedScene" id=7]
 [ext_resource path="res://prefab/SlideButton.tscn" type="PackedScene" id=8]
 [ext_resource path="res://prefab/Proyectil.tscn" type="PackedScene" id=9]
+[ext_resource path="res://font/font_big_title.tres" type="DynamicFont" id=10]
+[ext_resource path="res://style/style_select_level_button.tres" type="StyleBox" id=11]
 
 [sub_resource type="DynamicFont" id=1]
 size = 60
@@ -50,9 +52,6 @@ margin_bottom = 76.0
 custom_fonts/font = SubResource( 1 )
 text = "v 0.0.6"
 align = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Left" type="Control" parent="CanvasUI"]
 anchor_top = 1.0
@@ -69,6 +68,22 @@ __meta__ = {
 position = Vector2( 0, 0 )
 dist_min = 10
 only_horizontal = true
+
+[node name="BTN_Fall" type="Button" parent="CanvasUI/Left"]
+margin_left = -18.0
+margin_top = -101.0
+margin_right = 56.0
+margin_bottom = -30.0
+custom_fonts/font = ExtResource( 10 )
+custom_styles/hover = ExtResource( 11 )
+custom_styles/pressed = ExtResource( 11 )
+custom_styles/focus = ExtResource( 11 )
+custom_styles/disabled = ExtResource( 11 )
+custom_styles/normal = ExtResource( 11 )
+text = "V"
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Right" type="Control" parent="CanvasUI"]
 anchor_left = 1.0

@@ -83,3 +83,5 @@ func fastenChain(val):
 	cChain += val
 	if cChain<0: cChain = 0
 	if val>0: velocity = Vector2(0,0)
+
+
