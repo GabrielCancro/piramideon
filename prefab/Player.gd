@@ -7,7 +7,6 @@ var power_jump = 0
 var power_jump_inc = 0
 var power_atk = 0
 var power_atk_inc = 0
-var climb_pos = Vector2(0,0)
 
 var atSpeed = 150
 var atJump = 750
@@ -36,17 +35,17 @@ func _physics_process(delta):
 	mov = SB_move.percent_vec
 	if(abs(velocity.x)<abs(mov.x)*atSpeed): velocity.x += mov.x * 20
 	if inFloor(): velocity.x *= .90
-	elif cChain==0: velocity.y += GC.GRAVITY
-	if(climb_pos.length()!=0): velocity = Vector2.ZERO
+	else: velocity.y += GC.GRAVITY
+	if cChain>0: velocity = Vector2.ZERO
 	velocity = move_and_slide(velocity,Vector2(0, -1))
 	$prg_jump.direction = SB_jump.percent_vec
 	$prg_attack.direction = SB_attack.percent_vec
 
 func onJump(dir,percent):
 	if isDisable: return
-	if inFloor() || climb_pos.length()!=0:
+	if inFloor() || cChain>0:
+		if cChain>0: fastenChain(-9999)
 		velocity = Vector2(0,-50) + dir * atJump * $prg_jump.power*.01;
-		climb_pos = Vector2.ZERO
 
 func onAttack(dir,percent):
 	if isDisable: return
@@ -61,6 +60,7 @@ func inFloor():
 	return $RayBottom.is_colliding() || $RayBottom2.is_colliding()
 
 func hit(val=1):
+	if isDisable: return
 	modulate.a = .5
 	isDisable = true
 	GC.LIVES -= 1
@@ -75,4 +75,6 @@ func hit(val=1):
 
 func fastenChain(val):
 	cChain += val
+	if cChain<0: cChain = 0
+	print("cChain ",cChain)
 	if val>0: velocity = Vector2(0,0)
