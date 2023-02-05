@@ -18,7 +18,7 @@ func _ready():
 	move_to(end_pos)
 
 func move_to(pos):
-	var time = 1
+	var time = start_pos.distance_to(end_pos)/32.0/speed
 	$Tween.interpolate_property(self,"position",position,pos,time,Tween.TRANS_SINE,Tween.EASE_IN_OUT,delay)
 	$Tween.start()
 	if loop:

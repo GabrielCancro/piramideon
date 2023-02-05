@@ -9,10 +9,11 @@ var power_atk = 0
 var power_atk_inc = 0
 
 var atSpeed = 150
-var atJump = 750
+var atJump = 600
 var atAttack = 750
 
 var isDisable = false
+var isFriction = true
 var checkpoint_position = Vector2()
 
 var cChain = 0
@@ -33,10 +34,14 @@ func _ready():
 func _physics_process(delta):
 	if isDisable: return
 	mov = SB_move.percent_vec
+	if Input.is_action_pressed("ui_left"): mov.x=-1
+	if Input.is_action_pressed("ui_right"): mov.x=+1
 	if(abs(velocity.x)<abs(mov.x)*atSpeed): velocity.x += mov.x * 20
 	if inFloor(): velocity.x *= .90
 	else: velocity.y += GC.GRAVITY
-	if cChain>0: velocity = Vector2.ZERO
+	if cChain>0: 
+		velocity.y = 0
+		velocity.x *= .70
 	velocity = move_and_slide(velocity,Vector2(0, -1))
 	$prg_jump.direction = SB_jump.percent_vec
 	$prg_attack.direction = SB_attack.percent_vec
@@ -64,6 +69,7 @@ func hit(val=1):
 	modulate.a = .5
 	isDisable = true
 	GC.LIVES -= 1
+	velocity = Vector2()
 	emit_signal("onHit")
 	yield(get_tree().create_timer(1),"timeout")	
 	if(GC.LIVES>0): 
@@ -76,5 +82,4 @@ func hit(val=1):
 func fastenChain(val):
 	cChain += val
 	if cChain<0: cChain = 0
-	print("cChain ",cChain)
 	if val>0: velocity = Vector2(0,0)
