@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://scene/Game.gd" type="Script" id=1]
 [ext_resource path="res://assets/IMFePIsc28P_0.ttf" type="DynamicFontData" id=2]
@@ -11,10 +11,17 @@
 [ext_resource path="res://prefab/Proyectil.tscn" type="PackedScene" id=9]
 [ext_resource path="res://font/font_big_title.tres" type="DynamicFont" id=10]
 [ext_resource path="res://style/style_select_level_button.tres" type="StyleBox" id=11]
+[ext_resource path="res://font/MarianaSlabserif-8j5A.ttf" type="DynamicFontData" id=12]
 
 [sub_resource type="DynamicFont" id=1]
 size = 60
 font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 19
+outline_size = 1
+outline_color = Color( 0.368627, 0.368627, 0.368627, 1 )
+font_data = ExtResource( 12 )
 
 [node name="Game" type="Control"]
 anchor_right = 1.0
@@ -53,6 +60,31 @@ custom_fonts/font = SubResource( 1 )
 text = "v 0.0.6"
 align = 2
 
+[node name="Top" type="Control" parent="CanvasUI"]
+anchor_right = 1.0
+margin_bottom = 71.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="BTN_Quit" type="Button" parent="CanvasUI/Top"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -37.0
+margin_top = 8.0
+margin_right = 37.0
+margin_bottom = 46.0
+custom_fonts/font = SubResource( 2 )
+custom_styles/hover = ExtResource( 11 )
+custom_styles/pressed = ExtResource( 11 )
+custom_styles/focus = ExtResource( 11 )
+custom_styles/disabled = ExtResource( 11 )
+custom_styles/normal = ExtResource( 11 )
+text = "QUIT"
+__meta__ = {
+"_edit_group_": true
+}
+
 [node name="Left" type="Control" parent="CanvasUI"]
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -66,7 +98,6 @@ __meta__ = {
 [node name="SB_move" parent="CanvasUI/Left" instance=ExtResource( 8 )]
 position = Vector2( 0, 0 )
 dist_min = 10
-only_horizontal = true
 
 [node name="BTN_Fall" type="Button" parent="CanvasUI/Left"]
 margin_left = -18.0

@@ -38,8 +38,7 @@ func _physics_process(delta):
 	if inFloor(): velocity.x *= .90
 	else: velocity.y += GC.GRAVITY
 	if cChain>0: 
-		velocity.y = 0
-		velocity.x *= .70
+		velocity = mov * 20
 	velocity = move_and_slide(velocity,Vector2(0, -1))
 	$prg_jump.direction = SB_jump.percent_vec
 	$prg_attack.direction = SB_attack.percent_vec

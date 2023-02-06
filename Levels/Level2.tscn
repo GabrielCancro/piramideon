@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Objects/Pinchos.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Objects/Door.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://assets/map/wall1.png" type="Texture" id=5]
 [ext_resource path="res://Objects/Chains.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Objects/Platform.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Objects/ChechPoitn.tscn" type="PackedScene" id=8]
 
 [sub_resource type="ConvexPolygonShape2D" id=20]
 points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
@@ -87,32 +88,10 @@ position = Vector2( 64, 456 )
 toX = 12
 
 [node name="Pinchos" parent="ObjectsMap" instance=ExtResource( 1 )]
-position = Vector2( 240, 304 )
-scale = Vector2( 2, 2 )
+position = Vector2( 288, 304 )
 
 [node name="Pinchos2" parent="ObjectsMap" instance=ExtResource( 1 )]
-position = Vector2( 336, 304 )
-scale = Vector2( 2, 2 )
-
-[node name="Pinchos3" parent="ObjectsMap" instance=ExtResource( 1 )]
-position = Vector2( 400, 496 )
-scale = Vector2( 2, 2 )
-
-[node name="Pinchos4" parent="ObjectsMap" instance=ExtResource( 1 )]
-position = Vector2( 304, 496 )
-scale = Vector2( 2, 2 )
-
-[node name="Pinchos5" parent="ObjectsMap" instance=ExtResource( 1 )]
-position = Vector2( 208, 496 )
-scale = Vector2( 2, 2 )
-
-[node name="Pinchos6" parent="ObjectsMap" instance=ExtResource( 1 )]
-position = Vector2( 112, 496 )
-scale = Vector2( 2, 2 )
-
-[node name="Pinchos7" parent="ObjectsMap" instance=ExtResource( 1 )]
-position = Vector2( 16, 496 )
-scale = Vector2( 2, 2 )
+position = Vector2( 352, 304 )
 
 [node name="Chains" parent="ObjectsMap" instance=ExtResource( 6 )]
 position = Vector2( 376, 208 )
@@ -121,6 +100,38 @@ rotation = 1.5708
 [node name="Door" parent="ObjectsMap" instance=ExtResource( 2 )]
 position = Vector2( -256, 360 )
 z_index = -1
+
+[node name="PinchosXL" type="Node2D" parent="ObjectsMap"]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Pinchos3" parent="ObjectsMap/PinchosXL" instance=ExtResource( 1 )]
+position = Vector2( 416, 496 )
+
+[node name="Pinchos4" parent="ObjectsMap/PinchosXL" instance=ExtResource( 1 )]
+position = Vector2( 352, 496 )
+
+[node name="Pinchos5" parent="ObjectsMap/PinchosXL" instance=ExtResource( 1 )]
+position = Vector2( 288, 496 )
+
+[node name="Pinchos6" parent="ObjectsMap/PinchosXL" instance=ExtResource( 1 )]
+position = Vector2( 224, 496 )
+
+[node name="Pinchos7" parent="ObjectsMap/PinchosXL" instance=ExtResource( 1 )]
+position = Vector2( 160, 496 )
+
+[node name="Pinchos8" parent="ObjectsMap/PinchosXL" instance=ExtResource( 1 )]
+position = Vector2( 96, 496 )
+
+[node name="Pinchos9" parent="ObjectsMap/PinchosXL" instance=ExtResource( 1 )]
+position = Vector2( 32, 496 )
+
+[node name="Pinchos10" parent="ObjectsMap/PinchosXL" instance=ExtResource( 1 )]
+position = Vector2( -32, 496 )
+
+[node name="ChechPoitn" parent="ObjectsMap" instance=ExtResource( 8 )]
+position = Vector2( 576, 472 )
 
 [node name="StartPoint" type="Sprite" parent="."]
 position = Vector2( 112, 264 )

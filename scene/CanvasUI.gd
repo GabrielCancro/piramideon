@@ -7,6 +7,7 @@ func _ready():
 	GC.LIVES = 3
 	update_lives()
 	$Left/BTN_Fall.connect("button_down",self,"onBtnFallClick")
+	$Top/BTN_Quit.connect("button_down",self,"onBtnQuitClick")
 
 func _process(delta):
 	$Left/BTN_Fall.visible = (GC.PLAYER_REF && GC.PLAYER_REF.cChain>0)
@@ -18,3 +19,6 @@ func update_lives():
 
 func onBtnFallClick():
 	if GC.PLAYER_REF: GC.PLAYER_REF.fastenChain(-999999)
+
+func onBtnQuitClick():
+	get_tree().change_scene("res://scene/SelectLevel.tscn")
