@@ -56,10 +56,9 @@ align = 2
 [node name="Left" type="Control" parent="CanvasUI"]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_left = 40.0
-margin_top = -89.0
-margin_right = 104.0
-margin_bottom = -24.0
+margin_left = 32.0
+margin_top = -129.0
+margin_right = 160.0
 __meta__ = {
 "_edit_group_": true
 }
@@ -90,16 +89,14 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -136.0
-margin_top = -184.0
-margin_right = -40.0
-margin_bottom = -24.0
+margin_left = -160.0
+margin_top = -256.0
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="SB_jump" parent="CanvasUI/Right" instance=ExtResource( 8 )]
-position = Vector2( 0, 96 )
+position = Vector2( 0, 128 )
 
 [node name="SB_attack" parent="CanvasUI/Right" instance=ExtResource( 8 )]
 position = Vector2( 32, 0 )

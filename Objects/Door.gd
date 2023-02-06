@@ -5,5 +5,6 @@ func _ready():
 
 func onBody(body):
 	if body.name != "Player": return
+	body.position = position + 16
 	GC.DATA.level_success.append(GC.LEVEL)
 	GC.GAME_REF.win_level()

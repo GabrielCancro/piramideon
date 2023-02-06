@@ -48,7 +48,7 @@ func onJump(dir,percent):
 	if isDisable: return
 	if inFloor() || cChain>0:
 		if cChain>0: fastenChain(-9999)
-		velocity = Vector2(0,-50) + dir * atJump * $prg_jump.power*.01;
+		velocity = Vector2(0,-50) + dir * atJump * $prg_jump.power_segment*.01;
 
 func onAttack(dir,percent):
 	if isDisable: return

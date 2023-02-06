@@ -38,7 +38,7 @@ tint_progress = Color( 1, 0.164706, 0.164706, 1 )
 script = ExtResource( 7 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 0, -80 )
+position = Vector2( 0, -16 )
 current = true
 smoothing_enabled = true
 editor_draw_screen = false
