@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Objects/Door.tscn" type="PackedScene" id=1]
-[ext_resource path="res://icon.png" type="Texture" id=2]
-[ext_resource path="res://assets/map/wall2.png" type="Texture" id=3]
-[ext_resource path="res://Objects/Pinchos.tscn" type="PackedScene" id=5]
-[ext_resource path="res://assets/map/wall1.png" type="Texture" id=6]
+[ext_resource path="res://Objects/Pinchos.tscn" type="PackedScene" id=2]
+[ext_resource path="res://icon.png" type="Texture" id=3]
+[ext_resource path="res://assets/map/wall2.png" type="Texture" id=4]
+[ext_resource path="res://assets/map/wall1.png" type="Texture" id=5]
+[ext_resource path="res://prefab/Lava.tscn" type="PackedScene" id=6]
 
 [sub_resource type="ConvexPolygonShape2D" id=20]
 points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
@@ -17,7 +18,7 @@ points = PoolVector2Array( 32, 32, 0, 32, 0, 0, 32, 0 )
 
 [sub_resource type="TileSet" id=19]
 0/name = "wall1.png 0"
-0/texture = ExtResource( 6 )
+0/texture = ExtResource( 5 )
 0/tex_offset = Vector2( 0, 0 )
 0/modulate = Color( 1, 1, 1, 1 )
 0/region = Rect2( 0, 0, 32, 32 )
@@ -44,7 +45,7 @@ points = PoolVector2Array( 32, 32, 0, 32, 0, 0, 32, 0 )
 } ]
 0/z_index = 0
 1/name = "wall2.png 1"
-1/texture = ExtResource( 3 )
+1/texture = ExtResource( 4 )
 1/tex_offset = Vector2( 0, 0 )
 1/modulate = Color( 1, 1, 1, 1 )
 1/region = Rect2( 0, 0, 32, 32 )
@@ -65,7 +66,7 @@ points = PoolVector2Array( 32, 32, 0, 32, 0, 0, 32, 0 )
 } ]
 1/z_index = 0
 
-[node name="Level1" type="Node2D"]
+[node name="Level4" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource( 19 )
@@ -80,10 +81,10 @@ __meta__ = {
 
 [node name="ObjectsMap" type="Node" parent="."]
 
-[node name="Pinchos" parent="ObjectsMap" instance=ExtResource( 5 )]
+[node name="Pinchos" parent="ObjectsMap" instance=ExtResource( 2 )]
 position = Vector2( 320, 272 )
 
-[node name="Pinchos2" parent="ObjectsMap" instance=ExtResource( 5 )]
+[node name="Pinchos2" parent="ObjectsMap" instance=ExtResource( 2 )]
 position = Vector2( 384, 272 )
 
 [node name="Door" parent="ObjectsMap" instance=ExtResource( 1 )]
@@ -92,4 +93,8 @@ z_index = -1
 
 [node name="StartPoint" type="Sprite" parent="."]
 position = Vector2( 96, 272 )
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
+
+[node name="Lava" parent="." instance=ExtResource( 6 )]
+position = Vector2( 320, 288 )
+scale = Vector2( 2, 2 )
