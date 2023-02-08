@@ -2,7 +2,7 @@
 
 [ext_resource path="res://scene/Game.gd" type="Script" id=1]
 [ext_resource path="res://assets/IMFePIsc28P_0.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://assets/character.png" type="Texture" id=3]
+[ext_resource path="res://assets/ch_live.png" type="Texture" id=3]
 [ext_resource path="res://scene/CanvasUI.gd" type="Script" id=4]
 [ext_resource path="res://assets/intro_bg.jpg" type="Texture" id=5]
 [ext_resource path="res://prefab/BlackScreen.tscn" type="PackedScene" id=6]
@@ -133,28 +133,27 @@ position = Vector2( 0, 128 )
 position = Vector2( 32, 0 )
 
 [node name="Lives" type="HBoxContainer" parent="CanvasUI"]
-modulate = Color( 1, 1, 1, 0.721569 )
-margin_left = 32.0
-margin_top = 24.0
-margin_right = 234.0
-margin_bottom = 120.0
-custom_constants/separation = 5
+modulate = Color( 0.909804, 0.909804, 0.909804, 1 )
+margin_left = 36.0
+margin_top = 12.0
+margin_right = 175.0
+margin_bottom = 44.0
 
 [node name="l1" type="TextureRect" parent="CanvasUI/Lives"]
 margin_right = 32.0
-margin_bottom = 96.0
+margin_bottom = 32.0
 texture = ExtResource( 3 )
 
 [node name="l2" type="TextureRect" parent="CanvasUI/Lives"]
-margin_left = 37.0
-margin_right = 69.0
-margin_bottom = 96.0
+margin_left = 36.0
+margin_right = 68.0
+margin_bottom = 32.0
 texture = ExtResource( 3 )
 
 [node name="l3" type="TextureRect" parent="CanvasUI/Lives"]
-margin_left = 74.0
-margin_right = 106.0
-margin_bottom = 96.0
+margin_left = 72.0
+margin_right = 104.0
+margin_bottom = 32.0
 texture = ExtResource( 3 )
 
 [node name="BlackScreen" parent="CanvasUI" instance=ExtResource( 6 )]
