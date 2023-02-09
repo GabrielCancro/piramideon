@@ -42,6 +42,8 @@ func _physics_process(delta):
 	velocity = move_and_slide(velocity,Vector2(0, -1))
 	$prg_jump.direction = SB_jump.percent_vec
 	$prg_attack.direction = SB_attack.percent_vec
+	if mov.x!=0: $Sprite.flip_h = (mov.x<0)
+	elif velocity.x!=0: $Sprite.flip_h = (velocity.x<0)
 
 func onJump(dir,percent):
 	if isDisable: return

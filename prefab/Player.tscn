@@ -52,12 +52,12 @@ position = Vector2( 0, 2 )
 shape = SubResource( 1 )
 
 [node name="RayBottom" type="RayCast2D" parent="."]
-position = Vector2( -11, 0 )
-cast_to = Vector2( 0, 22 )
+position = Vector2( -6, 0 )
+cast_to = Vector2( 0, 18 )
 
 [node name="RayBottom2" type="RayCast2D" parent="."]
-position = Vector2( 10, 0 )
-cast_to = Vector2( 0, 22 )
+position = Vector2( 6, 0 )
+cast_to = Vector2( 0, 18 )
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource( 6 )
