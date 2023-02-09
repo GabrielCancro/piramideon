@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/map/wall1.png" type="Texture" id=1]
+[ext_resource path="res://Shaders/lava_material.tres" type="Material" id=2]
+[ext_resource path="res://Objects/Lava.gd" type="Script" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 4, 8 )
+
+[node name="Lava" type="Sprite"]
+material = ExtResource( 2 )
+scale = Vector2( 1.5, 1.5 )
+z_index = -1
+texture = ExtResource( 1 )
+script = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2( 4, 2 )
+shape = SubResource( 1 )

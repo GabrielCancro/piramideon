@@ -87,12 +87,9 @@ __meta__ = {
 
 [node name="Platform" parent="ObjectsMap/A" instance=ExtResource( 2 )]
 position = Vector2( 160, 232 )
-toX = 6
 
 [node name="Platform2" parent="ObjectsMap/A" instance=ExtResource( 2 )]
 position = Vector2( 416, 232 )
-toX = 6
-speed = 3
 
 [node name="Chains2" parent="ObjectsMap/A" instance=ExtResource( 3 )]
 position = Vector2( 160, 168 )
@@ -164,9 +161,6 @@ position = Vector2( -96, 680 )
 __meta__ = {
 "_edit_group_": true
 }
-toX = 0
-toY = -8
-speed = 3
 
 [node name="Pinchos4" parent="ObjectsMap/B/Platform" instance=ExtResource( 1 )]
 position = Vector2( 0, 18 )
