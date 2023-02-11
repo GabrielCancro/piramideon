@@ -22,3 +22,4 @@ func win_level():
 	GC.PLAYER_REF.isDisable = true
 	yield($CanvasUI/BlackScreen,"end_animation")	
 	get_tree().change_scene("res://scene/SelectLevel.tscn")
+
