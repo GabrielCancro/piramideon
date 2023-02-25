@@ -1,6 +1,6 @@
 extends Control
 
-var max_levels = 4
+var max_levels = 5
 
 func _ready():
 	setPiram()

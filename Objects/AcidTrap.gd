@@ -1,8 +1,8 @@
 extends Node2D
 
 var acid_drop_scene = preload("res://Objects/AcidDrop.tscn")
-export var time = 2
-export var delay = 0
+export var time = 2.0
+export var delay = 0.0
 
 func _ready():
 	$Timer.wait_time = time

@@ -10,11 +10,15 @@ func _ready():
 	GC.connect("on_trigger",self,"onTrigger")
 
 func close():
+	GC.cameraLookEffect(position)
+	yield(get_tree().create_timer(GC.CAMERA_TIME/2),"timeout")
 	$Tween.stop_all()
 	$Tween.interpolate_property(self,"position",position,start_pos,.5,Tween.TRANS_SINE,Tween.EASE_IN_OUT)
 	$Tween.start()
 
 func open():
+	GC.cameraLookEffect(position)
+	yield(get_tree().create_timer(GC.CAMERA_TIME/2),"timeout")
 	$Tween.stop_all()
 	$Tween.interpolate_property(self,"position",position,start_pos+desp_pos,.5,Tween.TRANS_SINE,Tween.EASE_IN_OUT)
 	$Tween.start()

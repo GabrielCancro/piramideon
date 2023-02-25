@@ -16,10 +16,11 @@ func onDead():
 	get_tree().change_scene("res://scene/SelectLevel.tscn")
 
 func win_level():
-	#CALLED FROM DOOR OBJECT
-	$CanvasUI/BlackScreen.blackIn(1.0)
+	#CALLED FROM DOOR OBJECT	
 	GC.PLAYER_REF.modulate.a = .5
 	GC.PLAYER_REF.isDisable = true
-	yield($CanvasUI/BlackScreen,"end_animation")	
-	get_tree().change_scene("res://scene/SelectLevel.tscn")
+	$CanvasUI/Top.visible = false
+	$CanvasUI/Left.visible = false
+	$CanvasUI/Right.visible = false
+	$CanvasUI/WinPanel.show_panel()
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://scene/Game.gd" type="Script" id=1]
 [ext_resource path="res://assets/IMFePIsc28P_0.ttf" type="DynamicFontData" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://font/font_big_title.tres" type="DynamicFont" id=10]
 [ext_resource path="res://style/style_select_level_button.tres" type="StyleBox" id=11]
 [ext_resource path="res://font/MarianaSlabserif-8j5A.ttf" type="DynamicFontData" id=12]
+[ext_resource path="res://scene/WinPanel.tscn" type="PackedScene" id=13]
 
 [sub_resource type="DynamicFont" id=1]
 size = 60
@@ -171,6 +172,9 @@ margin_left = 72.0
 margin_right = 104.0
 margin_bottom = 32.0
 texture = ExtResource( 3 )
+
+[node name="WinPanel" parent="CanvasUI" instance=ExtResource( 13 )]
+visible = false
 
 [node name="BlackScreen" parent="CanvasUI" instance=ExtResource( 6 )]
 

@@ -6,6 +6,7 @@ var actived = false
 func _ready():
 	$Area2D.connect("body_entered",self,"onBodyEnter")
 	$Area2D.connect("body_exited",self,"onBodyExit")
+	$Sprite.flip_v = !actived
 
 func onBodyEnter(body):
 	if body==GC.PLAYER_REF:
