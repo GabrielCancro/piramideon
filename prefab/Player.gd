@@ -17,6 +17,7 @@ var isFriction = true
 
 var cChain = 0
 var interact_object = null
+var hadKhopesh = true
 
 onready var SB_jump = get_node("/root/Game/CanvasUI/Right/SB_jump")
 onready var SB_attack = get_node("/root/Game/CanvasUI/Right/SB_attack")
@@ -54,9 +55,14 @@ func onJump(dir,percent):
 
 func onAttack(dir,percent):
 	if isDisable: return
-	var pry = preload("res://prefab/Proyectil.tscn").instance()
-	pry.position = position + dir*30
-	pry.velocity = atAttack*dir*$prg_attack.power*.01
+#	var pry = preload("res://prefab/Proyectil.tscn").instance()	
+#	pry.position = position + dir*30
+#	pry.velocity = atAttack*dir*$prg_attack.power*.01
+#	get_node("/root/Game").add_child(pry)
+	if !hadKhopesh: return
+	var pry = preload("res://prefab/Khopesh.tscn").instance()
+	pry.position = position + dir*6
+	pry.dir = dir
 	get_node("/root/Game").add_child(pry)
 
 func inFloor():

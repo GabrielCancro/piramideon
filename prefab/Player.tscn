@@ -36,6 +36,7 @@ texture_progress = ExtResource( 5 )
 fill_mode = 3
 tint_progress = Color( 1, 0.164706, 0.164706, 1 )
 script = ExtResource( 7 )
+min_amount = 100
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 0, -16 )

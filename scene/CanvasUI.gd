@@ -13,6 +13,7 @@ func _ready():
 func _process(delta):
 	$Left/BTN_Fall.visible = (GC.PLAYER_REF && GC.PLAYER_REF.cChain>0)
 	$Left/BTN_Interact.visible = (GC.PLAYER_REF && GC.PLAYER_REF.interact_object)
+	$Right/SB_attack.visible = (GC.PLAYER_REF && GC.PLAYER_REF.hadKhopesh)
 
 func update_lives():
 	for img in $Lives.get_children():
