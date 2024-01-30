@@ -28,6 +28,7 @@ signal onDead
 
 func _ready():
 	SB_jump.connect("onUpVector",self,"onJump")
+	SB_jump.connect("pressed",self,"onFastJump")
 	SB_attack.connect("onUpVector",self,"onAttack")
 	GC.PLAYER_REF = self
 
@@ -35,11 +36,13 @@ func _physics_process(delta):
 	if isDisable: return
 	mov = SB_move.percent_vec
 	if Input.is_action_pressed("ui_left"): mov.x=-1
-	if Input.is_action_pressed("ui_right"): mov.x=+1
+	if Input.is_action_pressed("ui_right"): mov.x=+1	
 	if(abs(velocity.x)<abs(mov.x)*atSpeed): velocity.x += mov.x * 20
 	if inFloor(): velocity.x *= .90
 	else: velocity.y += GC.GRAVITY
 	if cChain>0: 
+		if Input.is_action_pressed("ui_up"): mov.y=-1
+		if Input.is_action_pressed("ui_down"): mov.y=+1
 		velocity = mov * 40
 	velocity = move_and_slide(velocity,Vector2(0, -1))
 	$prg_jump.direction = SB_jump.percent_vec
@@ -52,6 +55,13 @@ func onJump(dir,percent):
 	if inFloor() || cChain>0:
 		if cChain>0: fastenChain(-9999)
 		velocity = Vector2(0,-50) + dir * atJump * $prg_jump.power_segment*.01;
+
+func onFastJump():
+	if isDisable: return
+	if inFloor() || cChain>0:
+		if cChain>0: fastenChain(-9999)
+		var vx = sign(mov.x)*150
+		velocity += Vector2(vx,-350);
 
 func onAttack(dir,percent):
 	if isDisable: return
