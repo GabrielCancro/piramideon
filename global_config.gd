@@ -1,6 +1,6 @@
 extends Node
 
-var GRAVITY = 20
+var GRAVITY = 15
 var LIVES
 var LEVEL = 0
 var RESTART_POSITION = Vector2()

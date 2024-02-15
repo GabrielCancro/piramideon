@@ -26,7 +26,8 @@ onready var SB_move = get_node("/root/Game/CanvasUI/Left/SB_move")
 signal onHit
 signal onDead
 
-var jumping_control_countdown = 0
+var max_speed = 200
+var max_jump = 250
 
 func _ready():
 	SB_jump.connect("onUpVector",self,"onJump")
@@ -40,10 +41,16 @@ func _physics_process(delta):
 	if Input.is_action_pressed("ui_left"): mov.x=-1
 	if Input.is_action_pressed("ui_right"): mov.x=+1
 	if Input.is_action_just_pressed("ui_accept"): onFastJump()
-	if(abs(velocity.x)<abs(mov.x)*atSpeed): velocity.x += mov.x * 40
-	if inFloor() && (mov.x==0 || sign(mov.x)!=sign(velocity.x)): velocity.x *= .80
-	elif inCornice() && velocity.y>=0: velocity.y = 0
-	else: velocity.y += GC.GRAVITY
+	
+	
+	if inFloor():
+		velocity.x = clamp(velocity.x+mov.x*40,-max_speed,max_speed)
+		if (mov.x==0 || sign(mov.x)!=sign(velocity.x)): velocity.x *= .80		
+	elif !inFloor(): 
+		velocity.y += GC.GRAVITY
+		if inCornice() && velocity.y>=0: velocity.y = 0
+		velocity.x *= 0.9
+		velocity.x = clamp(velocity.x+mov.x*50,-max_speed*1.3,max_speed*1.3)
 	if cChain>0: 
 		if Input.is_action_pressed("ui_up"): mov.y=-1
 		if Input.is_action_pressed("ui_down"): mov.y=+1
@@ -65,16 +72,14 @@ func onJump(dir,percent):
 	if inFloor() || cChain>0:
 		if cChain>0: fastenChain(-9999)
 		velocity = Vector2(0,-50) + dir * atJump * $prg_jump.power_segment*.01;
-	
 
 func onFastJump():
 	if isDisable: return
 	if inFloor() || cChain>0:
 		if cChain>0: fastenChain(-9999)
 		var vx = sign(mov.x)*70
-		velocity += Vector2(vx,-350);
-	if inCornice(): velocity = Vector2(0,-350);
-	print("CORNICE ",inCornice())
+		velocity.y = -max_jump
+	if inCornice(): velocity = Vector2(0,-max_jump);
 
 func onAttack(dir,percent):
 	if isDisable: return

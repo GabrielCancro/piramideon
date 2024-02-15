@@ -44,11 +44,12 @@ texture = ExtResource( 5 )
 script = ExtResource( 4 )
 
 [node name="lb_vel" type="Label" parent="CanvasUI"]
-margin_left = 19.0
-margin_top = 8.0
-margin_right = 231.0
-margin_bottom = 84.0
-custom_fonts/font = SubResource( 1 )
+visible = false
+margin_left = 462.0
+margin_top = -2.0
+margin_right = 674.0
+margin_bottom = 74.0
+custom_fonts/font = ExtResource( 10 )
 text = "velocity"
 
 [node name="lb_version" type="Label" parent="CanvasUI"]
