@@ -60,5 +60,16 @@ cast_to = Vector2( 0, 20 )
 position = Vector2( 6, 0 )
 cast_to = Vector2( 0, 20 )
 
+[node name="RayCornice1" type="RayCast2D" parent="."]
+position = Vector2( 0, -5 )
+cast_to = Vector2( 20, 0 )
+
+[node name="RayCornice2" type="RayCast2D" parent="."]
+position = Vector2( 0, -15 )
+cast_to = Vector2( 20, 0 )
+
+[node name="RayCornice3" type="RayCast2D" parent="."]
+cast_to = Vector2( 0, 35 )
+
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource( 6 )

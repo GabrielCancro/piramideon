@@ -26,6 +26,8 @@ onready var SB_move = get_node("/root/Game/CanvasUI/Left/SB_move")
 signal onHit
 signal onDead
 
+var jumping_control_countdown = 0
+
 func _ready():
 	SB_jump.connect("onUpVector",self,"onJump")
 	SB_jump.connect("pressed",self,"onFastJump")
@@ -36,9 +38,11 @@ func _physics_process(delta):
 	if isDisable: return
 	mov = SB_move.percent_vec
 	if Input.is_action_pressed("ui_left"): mov.x=-1
-	if Input.is_action_pressed("ui_right"): mov.x=+1	
-	if(abs(velocity.x)<abs(mov.x)*atSpeed): velocity.x += mov.x * 20
-	if inFloor(): velocity.x *= .90
+	if Input.is_action_pressed("ui_right"): mov.x=+1
+	if Input.is_action_just_pressed("ui_accept"): onFastJump()
+	if(abs(velocity.x)<abs(mov.x)*atSpeed): velocity.x += mov.x * 40
+	if inFloor() && (mov.x==0 || sign(mov.x)!=sign(velocity.x)): velocity.x *= .80
+	elif inCornice() && velocity.y>=0: velocity.y = 0
 	else: velocity.y += GC.GRAVITY
 	if cChain>0: 
 		if Input.is_action_pressed("ui_up"): mov.y=-1
@@ -47,21 +51,30 @@ func _physics_process(delta):
 	velocity = move_and_slide(velocity,Vector2(0, -1))
 	$prg_jump.direction = SB_jump.percent_vec
 	$prg_attack.direction = SB_attack.percent_vec
-	if mov.x!=0: $Sprite.flip_h = (mov.x<0)
-	elif velocity.x!=0: $Sprite.flip_h = (velocity.x<0)
+	if mov.x!=0: 
+		$Sprite.flip_h = (mov.x<0)
+		$RayCornice1.scale.x = sign(mov.x)
+		$RayCornice2.scale.x = sign(mov.x)
+	elif velocity.x!=0: 
+		$Sprite.flip_h = (velocity.x<0)
+		$RayCornice1.scale.x = sign(velocity.x)
+		$RayCornice2.scale.x = sign(velocity.x)
 
 func onJump(dir,percent):
 	if isDisable: return
 	if inFloor() || cChain>0:
 		if cChain>0: fastenChain(-9999)
 		velocity = Vector2(0,-50) + dir * atJump * $prg_jump.power_segment*.01;
+	
 
 func onFastJump():
 	if isDisable: return
 	if inFloor() || cChain>0:
 		if cChain>0: fastenChain(-9999)
-		var vx = sign(mov.x)*150
+		var vx = sign(mov.x)*70
 		velocity += Vector2(vx,-350);
+	if inCornice(): velocity = Vector2(0,-350);
+	print("CORNICE ",inCornice())
 
 func onAttack(dir,percent):
 	if isDisable: return
@@ -100,4 +113,9 @@ func fastenChain(val):
 	if cChain<0: cChain = 0
 	if val>0: velocity = Vector2(0,0)
 
-
+func inCornice():
+	$RayCornice1.force_raycast_update()
+	$RayCornice2.force_raycast_update()
+	$RayCornice3.force_raycast_update()
+	var res = $RayCornice1.is_colliding() && !$RayCornice2.is_colliding() && !$RayCornice3.is_colliding()
+	return res

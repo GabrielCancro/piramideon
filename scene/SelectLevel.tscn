@@ -36,98 +36,94 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -238.0
-margin_top = -104.0
+margin_top = -87.0
 margin_right = 238.0
-margin_bottom = 152.0
+margin_bottom = 117.0
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="R1" type="HBoxContainer" parent="Piramid"]
 margin_right = 476.0
-margin_bottom = 48.0
+margin_bottom = 52.0
 alignment = 1
 
 [node name="L1" parent="Piramid/R1" instance=ExtResource( 4 )]
 margin_left = 192.0
 margin_right = 284.0
+margin_bottom = 52.0
+rect_min_size = Vector2( 92, 52 )
 
 [node name="R2" type="HBoxContainer" parent="Piramid"]
-margin_top = 52.0
+margin_top = 56.0
 margin_right = 476.0
-margin_bottom = 100.0
+margin_bottom = 108.0
 alignment = 1
 
 [node name="L1" parent="Piramid/R2" instance=ExtResource( 4 )]
 margin_left = 144.0
 margin_right = 236.0
+margin_bottom = 52.0
+rect_min_size = Vector2( 92, 52 )
 
 [node name="L2" parent="Piramid/R2" instance=ExtResource( 4 )]
 margin_left = 240.0
 margin_right = 332.0
+margin_bottom = 52.0
+rect_min_size = Vector2( 92, 52 )
 
 [node name="R3" type="HBoxContainer" parent="Piramid"]
-margin_top = 104.0
+margin_top = 112.0
 margin_right = 476.0
-margin_bottom = 152.0
+margin_bottom = 164.0
 alignment = 1
 
 [node name="L1" parent="Piramid/R3" instance=ExtResource( 4 )]
 margin_left = 96.0
 margin_right = 188.0
+margin_bottom = 52.0
+rect_min_size = Vector2( 92, 52 )
 
 [node name="L2" parent="Piramid/R3" instance=ExtResource( 4 )]
 margin_left = 192.0
 margin_right = 284.0
+margin_bottom = 52.0
+rect_min_size = Vector2( 92, 52 )
 
 [node name="L3" parent="Piramid/R3" instance=ExtResource( 4 )]
 margin_left = 288.0
 margin_right = 380.0
+margin_bottom = 52.0
+rect_min_size = Vector2( 92, 52 )
 
 [node name="R4" type="HBoxContainer" parent="Piramid"]
-margin_top = 156.0
+margin_top = 168.0
 margin_right = 476.0
-margin_bottom = 204.0
+margin_bottom = 220.0
 alignment = 1
 
 [node name="L1" parent="Piramid/R4" instance=ExtResource( 4 )]
 margin_left = 48.0
 margin_right = 140.0
+margin_bottom = 52.0
+rect_min_size = Vector2( 92, 52 )
 
 [node name="L2" parent="Piramid/R4" instance=ExtResource( 4 )]
 margin_left = 144.0
 margin_right = 236.0
+margin_bottom = 52.0
+rect_min_size = Vector2( 92, 52 )
 
 [node name="L3" parent="Piramid/R4" instance=ExtResource( 4 )]
 margin_left = 240.0
 margin_right = 332.0
+margin_bottom = 52.0
+rect_min_size = Vector2( 92, 52 )
 
 [node name="L4" parent="Piramid/R4" instance=ExtResource( 4 )]
 margin_left = 336.0
 margin_right = 428.0
-
-[node name="R5" type="HBoxContainer" parent="Piramid"]
-margin_top = 208.0
-margin_right = 476.0
-margin_bottom = 256.0
-alignment = 1
-
-[node name="L1" parent="Piramid/R5" instance=ExtResource( 4 )]
-
-[node name="L2" parent="Piramid/R5" instance=ExtResource( 4 )]
-margin_left = 96.0
-margin_right = 188.0
-
-[node name="L3" parent="Piramid/R5" instance=ExtResource( 4 )]
-margin_left = 192.0
-margin_right = 284.0
-
-[node name="L4" parent="Piramid/R5" instance=ExtResource( 4 )]
-margin_left = 288.0
-margin_right = 380.0
-
-[node name="L5" parent="Piramid/R5" instance=ExtResource( 4 )]
-margin_left = 384.0
-margin_right = 476.0
+margin_bottom = 52.0
+rect_min_size = Vector2( 92, 52 )
 
 [node name="BlackScreen" parent="." instance=ExtResource( 5 )]
