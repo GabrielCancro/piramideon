@@ -45,7 +45,7 @@ func _physics_process(delta):
 	
 	if inFloor():
 		velocity.x = clamp(velocity.x+mov.x*40,-max_speed,max_speed)
-		if (mov.x==0 || sign(mov.x)!=sign(velocity.x)): velocity.x *= .80		
+		if (mov.x==0 || sign(mov.x)!=sign(velocity.x)): velocity.x *= .80
 	elif !inFloor(): 
 		velocity.y += GC.GRAVITY
 		if inCornice() && velocity.y>=0: velocity.y = 0
@@ -58,14 +58,8 @@ func _physics_process(delta):
 	velocity = move_and_slide(velocity,Vector2(0, -1))
 	$prg_jump.direction = SB_jump.percent_vec
 	$prg_attack.direction = SB_attack.percent_vec
-	if mov.x!=0: 
-		$Sprite.flip_h = (mov.x<0)
-		$RayCornice1.scale.x = sign(mov.x)
-		$RayCornice2.scale.x = sign(mov.x)
-	elif velocity.x!=0: 
-		$Sprite.flip_h = (velocity.x<0)
-		$RayCornice1.scale.x = sign(velocity.x)
-		$RayCornice2.scale.x = sign(velocity.x)
+	checkFlipCharacter()
+	checkAnim()
 
 func onJump(dir,percent):
 	if isDisable: return
@@ -105,7 +99,7 @@ func hit(val=1):
 	GC.LIVES -= 1
 	velocity = Vector2()
 	emit_signal("onHit")
-	yield(get_tree().create_timer(1),"timeout")	
+	yield(get_tree().create_timer(1),"timeout")
 	if(GC.LIVES>0): 
 		modulate.a = 1
 		isDisable = false
@@ -124,3 +118,18 @@ func inCornice():
 	$RayCornice3.force_raycast_update()
 	var res = $RayCornice1.is_colliding() && !$RayCornice2.is_colliding() && !$RayCornice3.is_colliding()
 	return res
+
+func checkAnim():
+	if inCornice(): $AnimatedSprite.play("cornice")
+	elif inFloor() && mov.x==0: $AnimatedSprite.play("idle")
+	elif inFloor() && mov.x!=0: $AnimatedSprite.play("walk")
+	elif !inFloor(): $AnimatedSprite.play("jump")
+
+func checkFlipCharacter():
+	if abs(mov.x)<0.2: return
+	if mov.x<0 == $AnimatedSprite.flip_h: return
+	#FLIP
+	$AnimatedSprite.flip_h = (mov.x<0)
+	$RayCornice1.scale.x = sign(mov.x)
+	$RayCornice2.scale.x = sign(mov.x)
+	print("FLIP!",$RayCornice2.scale.x)
