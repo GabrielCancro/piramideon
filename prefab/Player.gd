@@ -36,29 +36,35 @@ func _ready():
 	GC.PLAYER_REF = self
 
 func _physics_process(delta):
-	if isDisable: return
 	mov = SB_move.percent_vec
-	if Input.is_action_pressed("ui_left"): mov.x=-1
-	if Input.is_action_pressed("ui_right"): mov.x=+1
-	if Input.is_action_just_pressed("ui_accept"): onFastJump()
+	if !isDisable:
+		if Input.is_action_pressed("ui_left"): mov.x=-1
+		if Input.is_action_pressed("ui_right"): mov.x=+1
+		if Input.is_action_just_pressed("jump"): onFastJump()
+		if Input.is_action_just_released("attack"): onAttack()
 	
-	
+	checkFlipCharacter()
+	if checkPointingKhopesh():
+		mov = Vector2.ZERO
 	if inFloor():
 		velocity.x = clamp(velocity.x+mov.x*40,-max_speed,max_speed)
 		if (mov.x==0 || sign(mov.x)!=sign(velocity.x)): velocity.x *= .80
 	elif !inFloor(): 
 		velocity.y += GC.GRAVITY
-		if inCornice() && velocity.y>=0: velocity.y = 0
-		velocity.x *= 0.9
-		velocity.x = clamp(velocity.x+mov.x*50,-max_speed*1.3,max_speed*1.3)
+		if inCornice():
+			if velocity.y>=0: velocity.y = 0
+			velocity.x = 0
+		else:
+			velocity.x *= 0.9
+			velocity.x = clamp(velocity.x+mov.x*50,-max_speed*1.3,max_speed*1.3)
 	if cChain>0: 
-		if Input.is_action_pressed("ui_up"): mov.y=-1
-		if Input.is_action_pressed("ui_down"): mov.y=+1
+		if !isDisable && !checkPointingKhopesh():
+			if Input.is_action_pressed("ui_up"): mov.y=-1
+			if Input.is_action_pressed("ui_down"): mov.y=+1
 		velocity = mov * 40
 	velocity = move_and_slide(velocity,Vector2(0, -1))
 	$prg_jump.direction = SB_jump.percent_vec
 	$prg_attack.direction = SB_attack.percent_vec
-	checkFlipCharacter()
 	checkAnim()
 
 func onJump(dir,percent):
@@ -75,18 +81,18 @@ func onFastJump():
 		velocity.y = -max_jump
 	if inCornice(): velocity = Vector2(0,-max_jump);
 
-func onAttack(dir,percent):
+func onAttack():
 	if isDisable: return
-#	var pry = preload("res://prefab/Proyectil.tscn").instance()	
-#	pry.position = position + dir*30
-#	pry.velocity = atAttack*dir*$prg_attack.power*.01
-#	get_node("/root/Game").add_child(pry)
 	if !hadKhopesh: return
+	var stickVector: Vector2 = Input.get_vector("ui_left", "ui_right", "ui_up","ui_down")
 	var pry = preload("res://prefab/Khopesh.tscn").instance()
-	pry.position = position + dir*6
-	pry.dir = dir
+	pry.dir = Vector2(1,0).rotated($dirAttack.rotation)
+	pry.position = position + pry.dir*20
 	get_node("/root/Game").add_child(pry)
-
+	isDisable = true
+	yield(get_tree().create_timer(.7),"timeout")
+	isDisable = false
+	
 func inFloor():
 	$RayBottom.force_raycast_update()
 	$RayBottom2.force_raycast_update()
@@ -120,6 +126,7 @@ func inCornice():
 	return res
 
 func checkAnim():
+	if isDisable: return
 	if inCornice(): $AnimatedSprite.play("cornice")
 	elif inFloor() && mov.x==0: $AnimatedSprite.play("idle")
 	elif inFloor() && mov.x!=0: $AnimatedSprite.play("walk")
@@ -127,9 +134,22 @@ func checkAnim():
 
 func checkFlipCharacter():
 	if abs(mov.x)<0.2: return
+	if inCornice(): return
 	if mov.x<0 == $AnimatedSprite.flip_h: return
 	#FLIP
 	$AnimatedSprite.flip_h = (mov.x<0)
 	$RayCornice1.scale.x = sign(mov.x)
 	$RayCornice2.scale.x = sign(mov.x)
 	print("FLIP!",$RayCornice2.scale.x)
+
+func checkPointingKhopesh():
+	$dirAttack.visible = false
+	if isDisable: return false
+	if !hadKhopesh: return false
+	if Input.is_action_pressed("attack"):
+		$dirAttack.visible = true
+		var stickVector: Vector2 = Input.get_vector("ui_left", "ui_right", "ui_up","ui_down")
+		if stickVector.length()==0: stickVector = Vector2($RayCornice1.scale.x,0)
+		$dirAttack.rotation = stickVector.angle()
+		return true
+	return false

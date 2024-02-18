@@ -15,8 +15,8 @@ func _process(delta):
 	$Left/BTN_Interact.visible = (GC.PLAYER_REF && GC.PLAYER_REF.interact_object)
 	$Right/SB_attack.visible = (GC.PLAYER_REF && GC.PLAYER_REF.hadKhopesh)
 	
-	if $Left/BTN_Interact.visible && Input.is_action_just_pressed("ui_select"): onBtnInteractClick()
-	if $Left/BTN_Fall.visible && Input.is_action_just_pressed("ui_select"): onBtnFallClick()
+	if $Left/BTN_Interact.visible && Input.is_action_just_pressed("interact"): onBtnInteractClick()
+	if $Left/BTN_Fall.visible && Input.is_action_just_pressed("interact"): onBtnFallClick()
 	
 	$lb_vel.text = str(GC.PLAYER_REF.velocity.x)
 

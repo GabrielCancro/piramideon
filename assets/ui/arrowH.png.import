@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/arrow.png-037c4c84d387da566a8e39370a73460a.stex"
+path="res://.import/arrowH.png-cc5ee87dd9af705ea624bbb8917021bc.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui/arrow.png"
-dest_files=[ "res://.import/arrow.png-037c4c84d387da566a8e39370a73460a.stex" ]
+source_file="res://assets/ui/arrowH.png"
+dest_files=[ "res://.import/arrowH.png-cc5ee87dd9af705ea624bbb8917021bc.stex" ]
 
 [params]
 
@@ -31,5 +31,5 @@ process/invert_color=false
 process/normal_map_invert_y=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0
