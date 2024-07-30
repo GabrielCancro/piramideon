@@ -36,7 +36,7 @@ func _ready():
 	GC.PLAYER_REF = self
 
 func _physics_process(delta):
-	$Light2D.texture_scale = rand_range(3.5,3.7)
+	$Camera2D/Light2D.texture_scale = rand_range(3.5,3.7)
 	mov = SB_move.percent_vec
 	if !isDisable:
 		if Input.is_action_pressed("ui_left"): mov.x=-1
