@@ -2,6 +2,7 @@ extends KinematicBody2D
 
 var velocity = Vector2(150,0)
 var mov =  Vector2(0,0)
+var walk_speed = 60
 var impulse =  Vector2(0,0)
 var power_jump = 0
 var power_jump_inc = 0
@@ -27,7 +28,7 @@ signal onHit
 signal onDead
 
 var max_speed = 200
-var max_jump = 250
+var max_jump = 350
 
 func _ready():
 	SB_jump.connect("onUpVector",self,"onJump")
@@ -43,6 +44,8 @@ func _physics_process(delta):
 		if Input.is_action_pressed("ui_right"): mov.x=+1
 		if Input.is_action_just_pressed("jump"): onFastJump()
 		if Input.is_action_just_released("attack"): onAttack()
+		print(velocity.y)
+		if !Input.is_action_pressed("jump") && !is_on_floor() && velocity.y<-100: velocity.y+=delta*1500
 	
 	checkFlipCharacter()
 	if checkPointingKhopesh():
@@ -62,7 +65,7 @@ func _physics_process(delta):
 		if !isDisable && !checkPointingKhopesh():
 			if Input.is_action_pressed("ui_up"): mov.y=-1
 			if Input.is_action_pressed("ui_down"): mov.y=+1
-		velocity = mov * 40
+		velocity = mov * walk_speed
 	velocity = move_and_slide(velocity,Vector2(0, -1))
 	$prg_jump.direction = SB_jump.percent_vec
 	$prg_attack.direction = SB_attack.percent_vec
